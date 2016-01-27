@@ -1,4 +1,5 @@
 # Scrape Engine
+This module is only for demo porpuses, it will only work with specified content!
 This module retrieves data from the music recommander system last.fm via scraping. It takes metadata as an argument and provides the obtained data to a callback.
 
 ## Install
