@@ -1,5 +1,6 @@
 var cheerio = require('cheerio')
 var got = require('got')
+var fs = require('fs')
 
 module.exports = ScrapeEngine
 
@@ -37,297 +38,293 @@ function ScrapeEngine () {
   ]
 
   this.hipHop = [
-      // Empty
-      {
-        "title": "The Search is Over",
-        "album": "Ramen Music #04",
-        "artist": "K Saky",
-        "genre": "Hip-Hop"
-      }
-
-    ]
+    {
+      title: 'The Search is Over',
+      album: 'Ramen Music #04',
+      artist: 'K Saky',
+      genre: 'Hip-Hop'
+    }
+  ]
 
   this.rock = [
-      {
-        "title": "Angel Tongue",
-        "album": "Ramen Music #04",
-        "artist": "The Infinity Intention",
-        "genre": "Rock"
-      },
-      {
-        "title": "Killers",
-        "album": "Ramen Music #05",
-        "artist": "Life Jackets",
-        "genre": "Alternative"
-      },
-      {
-        "title": "Fountains",
-        "album": "Ramen Music #05",
-        "artist": "Panda Bear Jones",
-        "genre": "Alternative"
-      },
-      {
-        "title": "Naked Before My Captors",
-        "album": "Ramen Music #05",
-        "artist": "NORTHPILOT",
-        "genre": "Pop"
-      },
+    {
+      title: 'Angel Tongue',
+      album: 'Ramen Music #04',
+      artist: 'The Infinity Intention',
+      genre: 'Rock'
+    },
+    {
+      title: 'Killers',
+      album: 'Ramen Music #05',
+      artist: 'Life Jackets',
+      genre: 'Alternative'
+    },
+    {
+      title: 'Fountains',
+      album: 'Ramen Music #05',
+      artist: 'Panda Bear Jones',
+      genre: 'Alternative'
+    },
+    {
+      title: 'Naked Before My Captors',
+      album: 'Ramen Music #05',
+      artist: 'NORTHPILOT',
+      genre: 'Pop'
+    }
   ]
 
   this.alternative = [
-      {
-        "title": "Killers",
-        "album": "Ramen Music #05",
-        "artist": "Life Jackets",
-        "genre": "Alternative"
-      },
-      {
-        "title": "Fountains",
-        "album": "Ramen Music #05",
-        "artist": "Panda Bear Jones",
-        "genre": "Alternative"
-      },
-      {
-        "title": "Angel Tongue",
-        "album": "Ramen Music #04",
-        "artist": "The Infinity Intention",
-        "genre": "Rock"
-      },
-      {
-        "title": "Naked Before My Captors",
-        "album": "Ramen Music #05",
-        "artist": "NORTHPILOT",
-        "genre": "Pop"
-      }
+    {
+      title: 'Killers',
+      album: 'Ramen Music #05',
+      artist: 'Life Jackets',
+      genre: 'Alternative'
+    },
+    {
+      title: 'Fountains',
+      album: 'Ramen Music #05',
+      artist: 'Panda Bear Jones',
+      genre: 'Alternative'
+    },
+    {
+      title: 'Angel Tongue',
+      album: 'Ramen Music #04',
+      artist: 'The Infinity Intention',
+      genre: 'Rock'
+    },
+    {
+      title: 'Naked Before My Captors',
+      album: 'Ramen Music #05',
+      artist: 'NORTHPILOT',
+      genre: 'Pop'
+    }
   ]
 
   this.jazz = [
-      {
-        "title": "Lose, Loser, Lost",
-        "album": "Ramen Music #05",
-        "artist": "Susie Asado",
-        "genre": "Jazz"
-      }
+    {
+      title: 'Lose, Loser, Lost',
+      album: 'Ramen Music #05',
+      artist: 'Susie Asado',
+      genre: 'Jazz'
+    }
   ]
 
   this.folk = [
-      {
-        "title": "Someday All My Friends and Me",
-        "album": "Ramen Music #04",
-        "artist": "Matt Van Winkle",
-        "genre": "Folk"
-      },
-      {
-        "title": "Laika",
-        "album": "Ramen Music #05",
-        "artist": "Falk & Die Wiese",
-        "genre": "Folk"
-      },
-      {
-        "title": "Nothing",
-        "album": "Ramen Music #05",
-        "artist": "Joe Koenig",
-        "genre": "Pop-Folk"
-      },
-      {
-        "title": "Catatonic Eyes",
-        "album": "Ramen Music #04",
-        "artist": "David Nyman",
-        "genre": "Pop-Folk"
-      },
-      {
-        "title": "Dinosaurs",
-        "album": "Ramen Music #04",
-        "artist": "Sibsi",
-        "genre": "Pop-Folk"
-      }
+    {
+      title: 'Someday All My Friends and Me',
+      album: 'Ramen Music #04',
+      artist: 'Matt Van Winkle',
+      genre: 'Folk'
+    },
+    {
+      title: 'Laika',
+      album: 'Ramen Music #05',
+      artist: 'Falk & Die Wiese',
+      genre: 'Folk'
+    },
+    {
+      title: 'Nothing',
+      album: 'Ramen Music #05',
+      artist: 'Joe Koenig',
+      genre: 'Pop-Folk'
+    },
+    {
+      title: 'Catatonic Eyes',
+      album: 'Ramen Music #04',
+      artist: 'David Nyman',
+      genre: 'Pop-Folk'
+    },
+    {
+      title: 'Dinosaurs',
+      album: 'Ramen Music #04',
+      artist: 'Sibsi',
+      genre: 'Pop-Folk'
+    }
   ]
 
   this.popFolk = [
-      {
-        "title": "Nothing",
-        "album": "Ramen Music #05",
-        "artist": "Joe Koenig",
-        "genre": "Pop-Folk"
-      },
-      {
-        "title": "Catatonic Eyes",
-        "album": "Ramen Music #04",
-        "artist": "David Nyman",
-        "genre": "Pop-Folk"
-      },
-      {
-        "title": "Dinosaurs",
-        "album": "Ramen Music #04",
-        "artist": "Sibsi",
-        "genre": "Pop-Folk"
-      },
-      {
-        "title": "Someday All My Friends and Me",
-        "album": "Ramen Music #04",
-        "artist": "Matt Van Winkle",
-        "genre": "Folk"
-      },
-      {
-        "title": "Laika",
-        "album": "Ramen Music #05",
-        "artist": "Falk & Die Wiese",
-        "genre": "Folk"
-      }
+    {
+      title: 'Nothing',
+      album: 'Ramen Music #05',
+      artist: 'Joe Koenig',
+      genre: 'Pop-Folk'
+    },
+    {
+      title: 'Catatonic Eyes',
+      album: 'Ramen Music #04',
+      artist: 'David Nyman',
+      genre: 'Pop-Folk'
+    },
+    {
+      title: 'Dinosaurs',
+      album: 'Ramen Music #04',
+      artist: 'Sibsi',
+      genre: 'Pop-Folk'
+    },
+    {
+      title: 'Someday All My Friends and Me',
+      album: 'Ramen Music #04',
+      artist: 'Matt Van Winkle',
+      genre: 'Folk'
+    },
+    {
+      title: 'Laika',
+      album: 'Ramen Music #05',
+      artist: 'Falk & Die Wiese',
+      genre: 'Folk'
+    }
   ]
 
   this.pop = [
-      {
-        "title": "My Name Is Mathias",
-        "album": "Ramen Music #05",
-        "artist": "The Burning Hell",
-        "genre": "Pop"
-      },
-      {
-        "title": "Naked Before My Captors",
-        "album": "Ramen Music #05",
-        "artist": "NORTHPILOT",
-        "genre": "Pop"
-      },
-      {
-        "title": "What Does It Mean",
-        "album": "Ramen Music #05",
-        "artist": "Bombadil",
-        "genre": "Pop"
-      },
-      {
-        "title": "Basics of Breathing",
-        "album": "Ramen Music #04",
-        "artist": "The Sound Of Machines",
-        "genre": "Pop"
-      },
-      {
-        "title": "Interesting Specimen",
-        "album": "Ramen Music #04",
-        "artist": "Nate Henricks",
-        "genre": "Pop"
-      },
-      {
-        "title": "Love of Mine",
-        "album": "Ramen Music #04",
-        "artist": "Andy Berkhout",
-        "genre": "Pop"
-      }
+    {
+      title: 'My Name Is Mathias',
+      album: 'Ramen Music #05',
+      artist: 'The Burning Hell',
+      genre: 'Pop'
+    },
+    {
+      title: 'Naked Before My Captors',
+      album: 'Ramen Music #05',
+      artist: 'NORTHPILOT',
+      genre: 'Pop'
+    },
+    {
+      title: 'What Does It Mean',
+      album: 'Ramen Music #05',
+      artist: 'Bombadil',
+      genre: 'Pop'
+    },
+    {
+      title: 'Basics of Breathing',
+      album: 'Ramen Music #04',
+      artist: 'The Sound Of Machines',
+      genre: 'Pop'
+    },
+    {
+      title: 'Interesting Specimen',
+      album: 'Ramen Music #04',
+      artist: 'Nate Henricks',
+      genre: 'Pop'
+    },
+    {
+      title: 'Love of Mine',
+      album: 'Ramen Music #04',
+      artist: 'Andy Berkhout',
+      genre: 'Pop'
+    }
   ]
 
   this.synthpop = [
-      {
-        "title": "Language of Love",
-        "album": "Ramen Music #04",
-        "artist": "Favela Gold",
-        "genre": "Synthpop"
-      },
-      {
-        "title": "Łódź",
-        "album": "Ramen Music #04",
-        "artist": "Favela Gold",
-        "genre": "Synthpop"
-      },
-      {
-        "title": "Piano",
-        "album": "Ramen Music #04",
-        "artist": "6121618",
-        "genre": "Synthpop"
-      },
-      {
-        "title": "Hollowed Out Calling",
-        "album": "Ramen Music #04",
-        "artist": "Lovemummy",
-        "genre": "Indie"
-      },
+    {
+      title: 'Language of Love',
+      album: 'Ramen Music #04',
+      artist: 'Favela Gold',
+      genre: 'Synthpop'
+    },
+    {
+      title: 'Łódź',
+      album: 'Ramen Music #04',
+      artist: 'Favela Gold',
+      genre: 'Synthpop'
+    },
+    {
+      title: 'Piano',
+      album: 'Ramen Music #04',
+      artist: '6121618',
+      genre: 'Synthpop'
+    },
+    {
+      title: 'Hollowed Out Calling',
+      album: 'Ramen Music #04',
+      artist: 'Lovemummy',
+      genre: 'Indie'
+    }
   ]
 
   this.indie = [
-      {
-        "title": "Crazy",
-        "album": "Ramen Music #05",
-        "artist": "The Redemptive Soulz ft. Taylor Van Eynde",
-        "genre": "Indie"
-      },
-      {
-        "title": "Glazed",
-        "album": "Ramen Music #05",
-        "artist": "End The Noise",
-        "genre": "Indie"
-      },
-      {
-        "title": "Beware",
-        "album": "Ramen Music #04",
-        "artist": "Your Heart Breaks",
-        "genre": "Indie"
-      },
-      {
-        "title": "Hollowed Out Calling",
-        "album": "Ramen Music #04",
-        "artist": "Lovemummy",
-        "genre": "Indie"
-      },
-      {
-        "title": "The Moon",
-        "album": "Ramen Music #04",
-        "artist": "The Dukes of Rusman",
-        "genre": "Indie"
-      },
-      {
-        "title": "Vida La",
-        "album": "Ramen Music #04",
-        "artist": "Fer Isella",
-        "genre": "Indie"
-      }
+    {
+      title: 'Crazy',
+      album: 'Ramen Music #05',
+      artist: 'The Redemptive Soulz ft. Taylor Van Eynde',
+      genre: 'Indie'
+    },
+    {
+      title: 'Glazed',
+      album: 'Ramen Music #05',
+      artist: 'End The Noise',
+      genre: 'Indie'
+    },
+    {
+      title: 'Beware',
+      album: 'Ramen Music #04',
+      artist: 'Your Heart Breaks',
+      genre: 'Indie'
+    },
+    {
+      title: 'Hollowed Out Calling',
+      album: 'Ramen Music #04',
+      artist: 'Lovemummy',
+      genre: 'Indie'
+    },
+    {
+      title: 'The Moon',
+      album: 'Ramen Music #04',
+      artist: 'The Dukes of Rusman',
+      genre: 'Indie'
+    },
+    {
+      title: 'Vida La',
+      album: 'Ramen Music #04',
+      artist: 'Fer Isella',
+      genre: 'Indie'
+    }
   ]
 
   this.ambient = [
-      {
-        "title": "Chief Running Sauce",
-        "album": "Ramen Music #05",
-        "artist": "Arabb",
-        "genre": "Ambient"
-      },
-      {
-        "title": "MellowD",
-        "album": "Ramen Music #05",
-        "artist": "Legotape",
-        "genre": "Ambient"
-      },
-      {
-        "title": "Parlor Tricks",
-        "album": "Ramen Music #05",
-        "artist": "Andy Hentz",
-        "genre": "Ambient"
-      },
-      {
-        "title": "Crazy",
-        "album": "Ramen Music #05",
-        "artist": "The Redemptive Soulz ft. Taylor Van Eynde",
-        "genre": "Indie"
-      },
-      {
-        "title": "Glazed",
-        "album": "Ramen Music #05",
-        "artist": "End The Noise",
-        "genre": "Indie"
-      }
+    {
+      title: 'Chief Running Sauce',
+      album: 'Ramen Music #05',
+      artist: 'Arabb',
+      genre: 'Ambient'
+    },
+    {
+      title: 'MellowD',
+      album: 'Ramen Music #05',
+      artist: 'Legotape',
+      genre: 'Ambient'
+    },
+    {
+      title: 'Parlor Tricks',
+      album: 'Ramen Music #05',
+      artist: 'Andy Hentz',
+      genre: 'Ambient'
+    },
+    {
+      title: 'Crazy',
+      album: 'Ramen Music #05',
+      artist: 'The Redemptive Soulz ft. Taylor Van Eynde',
+      genre: 'Indie'
+    },
+    {
+      title: 'Glazed',
+      album: 'Ramen Music #05',
+      artist: 'End The Noise',
+      genre: 'Indie'
+    }
   ]
 }
 
-
-
 // Get the cover of an album as a base64 encoded JSON
 ScrapeEngine.prototype.getCover = function (album, artist, callback) {
-  var coverURL = 'http://localhost/'
+  var cover = ''
 
-  if (album === 'Ramen Music #04'){
-    coverURL += 'Ramen Music #04.jpg'
-  } else {
-    coverURL += 'Ramen Music #05.jpg'
+  if (album === 'Ramen Music #04') {
+    cover = 'Ramen Music #04.jpg'
+  } else if (album === 'Ramen Music #04') {
+    cover = 'Ramen Music #05.jpg'
   }
 
-  got(coverURL, {encoding: null}, function (err, data) {
+  fs.readFile(cover, {encoding: null}, function (err, data) {
     if (err) {
       callback(err, data)
       return
@@ -335,7 +332,8 @@ ScrapeEngine.prototype.getCover = function (album, artist, callback) {
 
     var base64 = new Buffer(data, 'binary').toString('base64')
     callback(err, base64)
-  }
+  })
+
   // this.getCoverURL(album, artist, function (err, coverURL) {
   //   if (err) {
   //     callback(err, coverURL)
@@ -518,43 +516,44 @@ ScrapeEngine.prototype.getSimilarTitle = function (title, album, artist, genre, 
   genre = genre === '' || !genre ? null : genre
   console.log('Getting similar title for...', {title: title, album: album, artist: artist, genre: genre})
 
+  var err = 'No similar title '
+
   // Get similar title by genre
   if (genre) {
     switch (genre) {
       case 'Hip-Hop':
-            callback(err, this.hipHop)
-            break;
+        callback(err, this.hipHop)
+        break
       case 'Rock':
-            callback(err, this.rock)
-            break;
+        callback(err, this.rock)
+        break
       case 'Alternative':
-            callback(err, this.alternative)
-            break;
+        callback(err, this.alternative)
+        break
       case 'Jazz':
-            callback(err, this.jazz)
-            break;
+        callback(err, this.jazz)
+        break
       case 'Folk':
-            callback(err, this.folk)
-            break;
+        callback(err, this.folk)
+        break
       case 'Pop-Folk':
-            callback(err, this.popFolk)
-            break;
+        callback(err, this.popFolk)
+        break
       case 'Pop':
-            callback(err, this.pop)
-            break;
+        callback(err, this.pop)
+        break
       case 'Synthpop':
-            callback(err, this.synthpop)
-            break;
+        callback(err, this.synthpop)
+        break
       case 'Indie':
-            callback(err, this.indie)
-            break;
+        callback(err, this.indie)
+        break
       case 'Ambient':
-            callback(err, this.ambient)
-            break;
-   default:
-            break;
+        callback(err, this.ambient)
+        break
+      default:
+        break
     }
-    // return this.getSimilarTitleByGenre(genre, callback)
   }
 
   // Get similar title by title, artist and album
