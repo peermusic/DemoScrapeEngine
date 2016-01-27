@@ -5,7 +5,7 @@ This module is only for demo purposes, it will only work with specified content!
 ## Install
 
 ```sh
-npm install https://github.com/peermusic/scrape-engine
+npm install https://github.com/peermusic/DemoScrapeEngine
 ```
 
 ```js
